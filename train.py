@@ -204,9 +204,9 @@ def train():
     trainer.save_state()
     trainer.save_model(output_dir=training_args.output_dir)
     # Save the fine-tuned model
-    trainer.save_model('finetuned_MedQuad”)
+    trainer.save_model("finetuned_MedQuad”)
 
-    model = AutoModelForCausalLM.from_pretrained('finetuned_MedQuad')
+    model = AutoModelForCausalLM.from_pretrained("finetuned_MedQuad')
 
     #Saving the Model on huggingface
     token = "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"
