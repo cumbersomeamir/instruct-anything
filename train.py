@@ -1,3 +1,4 @@
+#!pip3 install transformers torch openai accelerate
 import copy
 import logging
 from dataclasses import dataclass, field
@@ -7,7 +8,7 @@ import torch
 import transformers
 import utils
 from torch.utils.data import Dataset
-from transformers import Trainer
+from transformers import Trainer , AutoModelForCausalLM , AutoTokenizer
 
 IGNORE_INDEX = -100
 DEFAULT_PAD_TOKEN = "[PAD]"
@@ -202,6 +203,14 @@ def train():
     trainer.train()
     trainer.save_state()
     trainer.save_model(output_dir=training_args.output_dir)
+    # Save the fine-tuned model
+    trainer.save_model('finetuned_MedQuad”)
+
+    model = AutoModelForCausalLM.from_pretrained('finetuned_MedQuad')
+
+    #Saving the Model on huggingface
+    token = "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"
+    model.push_to_hub("Amirkid/MedQuad-opt6.7b", use_auth_token=token)
 
 
 if __name__ == "__main__":
