@@ -129,9 +129,10 @@ class SupervisedDataset(Dataset):
 
         logging.warning("Tokenizing inputs... This may take some time...")
         data_dict = preprocess(sources, targets, tokenizer)
-
+        print("Data Dict preprocessed")
         self.input_ids = data_dict["input_ids"]
         self.labels = data_dict["labels"]
+        print("Input ids and labels assigned"_
 
     def __len__(self):
         return len(self.input_ids)
