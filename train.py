@@ -200,8 +200,11 @@ def train():
     )
 
     data_module = make_supervised_data_module(tokenizer=tokenizer, data_args=data_args)
+    print("Supervised Data Module created")
     trainer = Trainer(model=model, tokenizer=tokenizer, args=training_args, **data_module)
+    print("trainer has been initialised")
     trainer.train()
+    print("trainer.train completed")
     trainer.save_state()
     trainer.save_model(output_dir=training_args.output_dir)
     # Save the fine-tuned model
