@@ -132,7 +132,7 @@ class SupervisedDataset(Dataset):
         print("Data Dict preprocessed")
         self.input_ids = data_dict["input_ids"]
         self.labels = data_dict["labels"]
-        print("Input ids and labels assigned"_
+        print("Input ids and labels assigned")
 
     def __len__(self):
         return len(self.input_ids)
